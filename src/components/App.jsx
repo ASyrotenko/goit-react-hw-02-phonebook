@@ -60,11 +60,7 @@ class App extends Component {
       <div>
         <ContactForm title={'Phonebook'} onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        <Filter
-          title="Find contacts by name"
-          value={this.state.filter}
-          onChange={this.changeFilter}
-        />
+        <Filter value={this.state.filter} onChange={this.changeFilter} />
         <ContactList
           contacts={filtredContacts}
           onDeleteContact={this.deleteContact}
