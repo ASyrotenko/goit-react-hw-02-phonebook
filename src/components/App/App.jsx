@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
+
+import styles from './app.module.css';
 
 class App extends Component {
   state = {
@@ -57,14 +59,17 @@ class App extends Component {
   render() {
     const filtredContacts = this.filterContacts();
     return (
-      <div>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Phonebook</h1>
         <ContactForm title={'Phonebook'} onSubmit={this.addContact} />
-        <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={this.changeFilter} />
-        <ContactList
-          contacts={filtredContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        <h2 className={styles.subTitle}>Contacts</h2>
+        <div className={styles.contactListWrap}>
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
+          <ContactList
+            contacts={filtredContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        </div>
       </div>
     );
   }
